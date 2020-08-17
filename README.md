@@ -1,4 +1,5 @@
-[logo]: https://raw.githubusercontent.com/sibis/producthunt-cli/master/logo.png "Product Hunt"
+![logo](https://raw.githubusercontent.com/sibis/producthunt-cli/master/logo.png "Product Hunt")
+
 
 Product hunt CLI
 
