@@ -110,7 +110,7 @@ brews:
     # Default is empty.
     # custom_block: |
     #  head "https://github.com/some/package.git"
-      ...
+    #  ...
 
     # Packages your package depends on.
     dependencies:
