@@ -56,7 +56,7 @@ brews:
     # Gitea is not supported yet, but the support coming
     tap:
       owner: sibis
-      name: homebrew-tap
+      name: producthunt-cli
       # Optionally a token can be provided, if it differs from the token provided to GoReleaser
       # token: "{{ .Env.HOMEBREW_TAP_GITHUB_TOKEN }}"
 
@@ -69,11 +69,11 @@ brews:
     # to implement the strategy and add it to your tap repository.
     # Example: https://docs.brew.sh/Formula-Cookbook#specifying-the-download-strategy-explicitly
     # Default is empty.
-    download_strategy: CurlDownloadStrategy.
+    #download_strategy: CurlDownloadStrategy.
 
     # Allows you to add a custom require_relative at the top of the formula template
     # Default is empty
-    custom_require: custom_download_strategy
+    #  custom_require: custom_download_strategy
 
     # Git author used to commit to the repository.
     # Defaults are shown.
@@ -87,7 +87,7 @@ brews:
 
     # Caveats for the user of your binary.
     # Default is empty.
-    caveats: "H"
+    #caveats: "H"
 
     # Your app's homepage.
     # Default is empty.
@@ -103,7 +103,7 @@ brews:
     # If set to auto, the release will not be uploaded to the homebrew tap
     # in case there is an indicator for prerelease in the tag e.g. v1.0.0-rc1
     # Default is false.
-    skip_upload: true
+    # skip_upload: true
 
     # Custom block for brew.
     # Can be used to specify alternate downloads for devel or head releases.
