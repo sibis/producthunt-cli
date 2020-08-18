@@ -54,3 +54,8 @@ brews:
     tap:
       owner: sibis
       name: producthunt-cli
+    folder: Formula
+
+    homepage: "https://sibis.dev"
+    description: "CLI tool to access the product hunt trending products"
+
