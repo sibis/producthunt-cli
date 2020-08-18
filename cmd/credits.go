@@ -31,7 +31,7 @@ var creditsCmd = &cobra.Command{
 
 		**********************************************************************************************************
 		*                                                                                                        *
-		*   Thanks for using ph-cli! 💫                                                                          *
+		*   Thanks for using ph! 💫                                                                              *
 		*                                                                                                        *
 		*   I'm Sibi from India, backend developer works mostly on Go and Python.                                *
 		*   Porfolio: https://sibis.dev                                                                          *

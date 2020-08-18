@@ -19,9 +19,29 @@ import (
 	"fmt"
 	"net/url"
 	"os/exec"
+	"runtime"
 
 	"github.com/spf13/cobra"
 )
+
+func openbrowser(url string) {
+	var err error
+
+	switch runtime.GOOS {
+	case "linux":
+		err = exec.Command("xdg-open", url).Start()
+	case "windows":
+		err = exec.Command("rundll32", "url.dll,FileProtocolHandler", url).Start()
+	case "darwin":
+		err = exec.Command("open", url).Start()
+	default:
+		err = fmt.Errorf("unsupported platform")
+	}
+	if err != nil {
+		fmt.Println(err)
+	}
+
+}
 
 // signinCmd represents the signin command
 var signinCmd = &cobra.Command{
@@ -29,18 +49,15 @@ var signinCmd = &cobra.Command{
 	Short: "Authorize the application from your account",
 	Long:  `Helps to generate the code by providing the access, we promise not to pose without your consent`,
 	Run: func(cmd *cobra.Command, args []string) {
-		client_id := "K0G_mZKnQkvmBPTHXC7bKAXgJZlLzgA0TePqFpn2yJU"
+		client_id := "yMZ8SVhHi9BZXSI-yGOFb0YXg-u5B4H8Rs_UdCYjTjo"
 		q := url.Values{}
 		q.Set("client_id", client_id)
 		q.Set("scope", "public")
 		q.Set("redirect_uri", fmt.Sprintf("https://producthuntcli.netlify.app/"))
 		q.Set("response_type", "code")
 		url := fmt.Sprintf("https://api.producthunt.com/v2/oauth/authorize?%s", q.Encode())
-		err := exec.Command("open", url).Start()
-
-		if err != nil {
-			fmt.Println(err)
-		}
+		fmt.Println("Opening the default browser to authenticate!")
+		openbrowser(url)
 	},
 }
 
