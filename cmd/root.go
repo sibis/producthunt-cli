@@ -30,8 +30,8 @@ var cfgFile string
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "/",
-	Short: "Producthunt CLI tool allows you to get the latest updates delivered to your CLI directly",
-	Long:  `Enjoy your daily producthunt activity from your CLI to the updates on today's trending hunts and take actions like upvoting the products and visit the products live link without needing to use the browser.`,
+	Short: "Producthunt CLI application allows you to get the latest trending products delivered to your CLI directly",
+	Long:  `Enjoy your daily producthunt activities from your CLI to get the trending product updates with the option to read the entire information about the product without need to use the browser.`,
 }
 
 func Execute() {

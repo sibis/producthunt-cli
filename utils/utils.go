@@ -49,7 +49,9 @@ func Readtoken() string {
 	path, _ := os.LookupEnv("HOME")
 	dat, err := ioutil.ReadFile(path + "/.producthunt")
 	if err != nil {
-		panic(err)
+		fmt.Println("Looks like you are not authenticated. Please run `producthunt-cli signin` to authenticate before performing this operation!")
+		defer os.Exit(0)
+
 	}
 	result := string(dat)
 	return result
@@ -177,7 +179,8 @@ func MakeReq(jsonData map[string]string) []byte {
 	response, err := client.Do(request)
 	s.Stop()
 	if err != nil {
-		fmt.Printf("The HTTP request failed with error %s\n", err)
+		fmt.Println("Looks like your token is not valid. Please run `producthunt-cli signin` to re-authenticate before performing this operation!")
+		defer os.Exit(0)
 	}
 	data, _ := ioutil.ReadAll(response.Body)
 	return data

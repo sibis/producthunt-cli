@@ -32,7 +32,7 @@ import (
 var codeCmd = &cobra.Command{
 	Use:   "code",
 	Short: "Authorize the application from your account",
-	Long:  `Helps to generate the code by providing the access, we promise not to pose without your consent`,
+	Long:  `Helps to generate the code by providing the access, we promise not to post anything from your account`,
 	Run: func(cmd *cobra.Command, args []string) {
 
 		path, _ := os.LookupEnv("HOME")
@@ -52,7 +52,7 @@ var codeCmd = &cobra.Command{
 		request.Header.Add("Accept", "application/json")
 		request.Header.Add("Host", "api.producthunt.com")
 		request.Header.Add("Content-Type", "application/json")
-		client := &http.Client{Timeout: time.Second * 30}
+		client := &http.Client{Timeout: time.Second * 60}
 		response, err := client.Do(request)
 		s.Stop()
 		if err != nil {
@@ -64,11 +64,11 @@ var codeCmd = &cobra.Command{
 		// Unmarshal or Decode the JSON to the interface.
 		json.Unmarshal([]byte(data), &result)
 		if result["access_token"] == nil {
-			fmt.Println("Please signin again to generate the fresh code by running, `producthunt signin`")
+			fmt.Println("Please signin again to generate the fresh code by running, `producthunt-cli signin`")
+		} else {
+			_, _ = f.WriteString(fmt.Sprintf("%s", result["access_token"]))
+			fmt.Println("Authenticated successfully!")
 		}
-
-		_, _ = f.WriteString(fmt.Sprintf("%s", result["access_token"]))
-		fmt.Println("Code added successfully!")
 	},
 }
 

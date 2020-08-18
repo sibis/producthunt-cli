@@ -23,8 +23,8 @@ import (
 // viewCmd represents the view command
 var viewCmd = &cobra.Command{
 	Use:   "view",
-	Short: "A brief information about the product",
-	Long:  `A detailed information related to the product of which id is passed`,
+	Short: "To view the prodcut information",
+	Long:  `A detailed information related to the product and its makers.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		utils.ViewProduct(args)
 	},

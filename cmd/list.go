@@ -18,6 +18,7 @@ package cmd
 import (
 	"encoding/json"
 	"fmt"
+	"strconv"
 
 	"../utils"
 	"github.com/mgutz/ansi"
@@ -56,8 +57,8 @@ type PostsJson struct {
 // signinCmd represents the signin command
 var listCmd = &cobra.Command{
 	Use:   "list",
-	Short: "Fetches the list of products trnding",
-	Long:  `current trending products`,
+	Short: "Fetches the list of trending products",
+	Long:  `current trending products on Product Hunt app`,
 	Run: func(cmd *cobra.Command, args []string) {
 		jsonData := map[string]string{
 			"query": `
@@ -118,7 +119,7 @@ var listCmd = &cobra.Command{
 				productCategory += fmt.Sprintf("%s", category.Node.Name)
 			}
 			productCategory += " ]"
-			fmt.Print("👉 " + productName(product.Node.Name) + " (↑" + string(product.Node.VotesCount) + ") " + categoryColor(productCategory) + "\n")
+			fmt.Print("👉 " + productName(product.Node.Name) + " (↑" + strconv.Itoa(product.Node.VotesCount) + ") " + categoryColor(productCategory) + "\n")
 			fmt.Println(product.Node.Tagline)
 
 			for _, link := range product.Node.ProductLinks {
