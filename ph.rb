@@ -7,11 +7,20 @@ class Ph < Formula
 
   if OS.mac?
     url "https://github.com/sibis/producthunt-cli/releases/download/v0.1.0/ph_0.1.0_Darwin_x86_64.tar.gz"
-    sha256 "34b1ecbad064e619964d3a92c7f18188ec54483c2f46627f352ba0e85746a8e3"
+    sha256 "8b908cab21c9581c37f126107560e7198df5d5ac4a8d45057ef89ec6b024b227"
   elsif OS.linux?
     if Hardware::CPU.intel?
       url "https://github.com/sibis/producthunt-cli/releases/download/v0.1.0/ph_0.1.0_Linux_x86_64.tar.gz"
-      sha256 "087214cf1f0a5dda9240d910cd49109af61cf79596022628d75b6bf7286231cf"
+      sha256 "680b560c43a845f6fcc47772d6eda039a0051d9429901c74459cb64b3dc30e7b"
+    end
+    if Hardware::CPU.arm?
+      if Hardware::CPU.is_64_bit?
+        url "https://github.com/sibis/producthunt-cli/releases/download/v0.1.0/ph_0.1.0_Linux_arm64.tar.gz"
+        sha256 "66a31efc29447bde37d19305b696793b02cf16061e69177a24f6d1db787bd485"
+      else
+        url "https://github.com/sibis/producthunt-cli/releases/download/v0.1.0/ph_0.1.0_Linux_armv6.tar.gz"
+        sha256 "f62b6ee9badadf0bad0fd81450e3e70aee77f060b0cb30f1e0018749b98a3d68"
+      end
     end
   end
 
