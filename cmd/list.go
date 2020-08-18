@@ -54,11 +54,10 @@ type PostsJson struct {
 	} `json:"data"`
 }
 
-// signinCmd represents the signin command
 var listCmd = &cobra.Command{
 	Use:   "list",
 	Short: "Fetches the list of trending products",
-	Long:  `current trending products on Product Hunt app`,
+	Long:  `Current trending products from the Product Hunt`,
 	Run: func(cmd *cobra.Command, args []string) {
 		jsonData := map[string]string{
 			"query": `
@@ -95,7 +94,7 @@ var listCmd = &cobra.Command{
 		heading := ansi.ColorFunc("green")
 		productName := ansi.ColorFunc("cyan+b")
 		categoryColor := ansi.ColorFunc("magenta")
-		linkColor := ansi.ColorFunc("blue")
+		linkColor := ansi.ColorFunc("45")
 		headingmsg := heading("Trending products")
 		size, _ := terminal.Width()
 		fmt.Printf(fmt.Sprintf("%%-%ds", int(size)/2), fmt.Sprintf(fmt.Sprintf("%%%ds", int(size)/2), headingmsg))
@@ -129,6 +128,9 @@ var listCmd = &cobra.Command{
 			fmt.Println("\n")
 
 		}
+
+		fmt.Println("* [cmd + click] on the link to open it in your default browser")
+		fmt.Println("\n")
 
 		utils.ChooseProduct(trendingNames, trendingNamesMap)
 	},

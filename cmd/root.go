@@ -27,11 +27,21 @@ import (
 
 var cfgFile string
 
-// rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "/",
 	Short: "Producthunt CLI application allows you to get the latest trending products delivered to your CLI directly",
-	Long:  `Enjoy your daily producthunt activities from your CLI to get the trending product updates with the option to read the entire information about the product without need to use the browser.`,
+	Long: `
+	
+Enjoy the daily producthunt updates on your CLI about current trending products.
+Option to select the current trending products to read the full details about the product along with maker(s) information.
+
+To start using it, you need to authorize from your ProductHunt app by running, 
+	ph signin
+
+	Maker: Sibis (https://sibis.dev)
+	Run: ph credits (for more info)
+
+	 `,
 }
 
 func Execute() {

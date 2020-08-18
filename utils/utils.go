@@ -49,7 +49,7 @@ func Readtoken() string {
 	path, _ := os.LookupEnv("HOME")
 	dat, err := ioutil.ReadFile(path + "/.producthunt")
 	if err != nil {
-		fmt.Println("Looks like you are not authenticated. Please run `producthunt-cli signin` to authenticate before performing this operation!")
+		fmt.Println("Looks like you are not authenticated. Please run `ph signin` to authenticate before performing this operation!")
 		defer os.Exit(0)
 
 	}
@@ -140,7 +140,7 @@ func ViewProduct(args []string) {
 
 func ChooseProduct(trendingNames []string, trendingNamesMap map[string]string) {
 	prompt := promptui.Select{
-		Label: "Select the product you read the details: ",
+		Label: "Select the product to read the detailed information: ",
 		Items: trendingNames,
 	}
 
@@ -179,7 +179,7 @@ func MakeReq(jsonData map[string]string) []byte {
 	response, err := client.Do(request)
 	s.Stop()
 	if err != nil {
-		fmt.Println("Looks like your token is not valid. Please run `producthunt-cli signin` to re-authenticate before performing this operation!")
+		fmt.Println("Looks like your token is not valid. Please run `ph signin` to re-authenticate before performing this operation!")
 		defer os.Exit(0)
 	}
 	data, _ := ioutil.ReadAll(response.Body)

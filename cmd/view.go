@@ -31,7 +31,7 @@ var viewCmd = &cobra.Command{
 }
 
 func init() {
+	// Product flag needs to be passed to execute `ph view` command
 	viewCmd.Flags().StringP("product", "p", "", "Product ID (required)")
 	rootCmd.AddCommand(viewCmd)
-
 }

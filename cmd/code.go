@@ -64,7 +64,7 @@ var codeCmd = &cobra.Command{
 		// Unmarshal or Decode the JSON to the interface.
 		json.Unmarshal([]byte(data), &result)
 		if result["access_token"] == nil {
-			fmt.Println("Please signin again to generate the fresh code by running, `producthunt-cli signin`")
+			fmt.Println("Please signin again to generate the fresh code by running, `ph signin`")
 		} else {
 			_, _ = f.WriteString(fmt.Sprintf("%s", result["access_token"]))
 			fmt.Println("Authenticated successfully!")
