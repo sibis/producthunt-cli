@@ -46,7 +46,7 @@ var codeCmd = &cobra.Command{
 		s := spinner.New(spinner.CharSets[11], 100*time.Millisecond) // Build our new spinner
 		s.Start()
 		url := "https://api.producthunt.com/v2/oauth/token"
-		values := map[string]string{"client_id": "yMZ8SVhHi9BZXSI-yGOFb0YXg-u5B4H8Rs_UdCYjTjo", "client_secret": "NDm9SUY_u__b9rFzY1uC-uB3XFYxK0CjUazzgUjJTj0", "grant_type": "authorization_code", "redirect_uri": "https://producthuntcli.netlify.app/", "code": args[0]}
+		values := map[string]string{"client_id": os.Getenv("CLIENT_ID"), "client_secret": os.Getenv("CLIENT_SECRET"), "grant_type": "authorization_code", "redirect_uri": "https://producthuntcli.netlify.app/", "code": args[0]}
 		jsonValue, _ := json.Marshal(values)
 		request, err := http.NewRequest("POST", url, bytes.NewBuffer(jsonValue))
 		request.Header.Add("Accept", "application/json")

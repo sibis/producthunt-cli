@@ -18,6 +18,7 @@ package cmd
 import (
 	"fmt"
 	"net/url"
+	"os"
 	"os/exec"
 	"runtime"
 
@@ -49,7 +50,7 @@ var signinCmd = &cobra.Command{
 	Short: "Authorize the application from your account",
 	Long:  `Helps to generate the code by providing the access, we promise not to pose without your consent`,
 	Run: func(cmd *cobra.Command, args []string) {
-		client_id := "yMZ8SVhHi9BZXSI-yGOFb0YXg-u5B4H8Rs_UdCYjTjo"
+		client_id := os.Getenv("CLIENT_ID")
 		q := url.Values{}
 		q.Set("client_id", client_id)
 		q.Set("scope", "public")
